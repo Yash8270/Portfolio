@@ -2,11 +2,16 @@
 module.exports = {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}", // include all source files
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        inter: ['"Fira Code"', 'monospace'], // replace 'inter' with Fira Code globally
+      },
+    },
   },
   plugins: [],
-}
+};
+
 
