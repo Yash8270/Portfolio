@@ -32,7 +32,7 @@ export default function About({ data }) {
                 View My Work <ArrowRight className="w-5 h-5" />
               </a>
               <a
-                href="/Yash_Resume.pdf"
+                href={process.env.REACT_APP_RESUME}
                 download
                 className="flex items-center justify-center gap-2 px-6 py-3 text-gray-300 hover:text-white transition-all duration-300"
               >
