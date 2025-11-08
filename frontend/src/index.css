@@ -1,0 +1,58 @@
+/* Import Tailwind base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define custom animations */
+@layer base {
+  body {
+    /* Apply a default font, assuming "Inter" is imported in your index.html or via a font package */
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* --- Animation for the typing caret --- */
+  .blink-caret {
+    animation: blink 1s infinite;
+  }
+
+  /* --- Animation for floating cards --- */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* --- Animation for page sections fading in --- */
+  .animate-fadeIn {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
