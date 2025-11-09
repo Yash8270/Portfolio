@@ -9,7 +9,7 @@ export default function Resume({ data }) {
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionTitle title={data.title} summary={data.summary} />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Education & Skills */}
+          {/* --- Education & Skills --- */}
           <div className="space-y-12">
             <div>
               <h3 className="text-3xl font-semibold text-white mb-6 pb-2 border-b-2 border-blue-500 inline-block">
@@ -42,7 +42,7 @@ export default function Resume({ data }) {
             </div>
           </div>
 
-          {/* Experience */}
+          {/* --- Experience --- */}
           <div>
             <h3 className="text-3xl font-semibold text-white mb-6 pb-2 border-b-2 border-blue-500 inline-block">
               Professional Experience

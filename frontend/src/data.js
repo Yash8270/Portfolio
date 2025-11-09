@@ -9,7 +9,7 @@ import {
   Instagram,
   Linkedin,
   Github,
-  MessageCircle
+  MessageCircle,
 } from 'lucide-react';
 
 export const portfolioData = {
@@ -101,15 +101,15 @@ export const portfolioData = {
     ],
     skills: [
       { name: 'ReactJS / JavaScript', level: 95 },
-      { name: 'Python / FastAPI', level: 90 },
-      { name: 'NodeJS / Express', level: 85 },
-      { name: 'MongoDB / MySQL', level: 85 },
+      { name: 'Python / FastAPI', level: 85 },
+      { name: 'NodeJS / Express', level: 90 },
+      { name: 'MongoDB / MySQL', level: 90 },
       { name: 'Machine Learning / AI', level: 80 },
     ],
   },
 
-  work: {
-    title: 'My Work',
+  projects: {
+    title: 'My Projects',
     summary: 'A showcase of projects across full-stack web development, AI systems, and embedded robotics.',
     projects: [
       {
@@ -170,9 +170,9 @@ export const portfolioData = {
 };
 
 export const navItems = [
-  { name: 'home', title: 'Home', icon: <Home className="w-5 h-5" /> },
-  { name: 'about', title: 'About', icon: <User className="w-5 h-5" /> },
-  { name: 'resume', title: 'Resume', icon: <FileText className="w-5 h-5" /> },
-  { name: 'work', title: 'Work', icon: <Briefcase className="w-5 h-5" /> },
-  { name: 'contact', title: 'Contact', icon: <Mail className="w-5 h-5" /> },
+  { name: 'home', title: 'Home', icon: <Home className="w-5 h-5" />, path: '/' },
+  { name: 'about', title: 'About', icon: <User className="w-5 h-5" />, path: '/about' },
+  { name: 'resume', title: 'Resume', icon: <FileText className="w-5 h-5" />, path: '/resume' },
+  { name: 'projects', title: 'Projects', icon: <Briefcase className="w-5 h-5" />, path: '/projects' },
+  { name: 'contact', title: 'Contact', icon: <Mail className="w-5 h-5" />, path: '/contact' },
 ];
