@@ -4,7 +4,7 @@ export default async function handler(req, res) {
       res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  
+
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method not allowed' });
   }
@@ -29,19 +29,23 @@ export default async function handler(req, res) {
 
   // Email to you (the portfolio owner)
   const mailOptions = {
-    from: email, // the user's email
-    to: process.env.REACT_APP_EMAIL_USER, // your inbox
-    subject: `Portfolio Message: ${subject}`,
-    text: `
-You have received a new message from your portfolio contact form.
+  from: email,
+  to: process.env.REACT_APP_EMAIL_USER,
+  subject: `Portfolio Message: ${subject}`,
+  html: `
+    <div style="font-family: Arial, sans-serif; font-size: 15px; color: #333;">
+      <h2 style="color: #007bff;">New message from your portfolio</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Subject:</strong> ${subject}</p>
+      <p><strong>Message:</strong></p>
+      <p style="white-space: pre-line;">${message}</p>
+      <hr />
+      <p style="font-size: 13px; color: #777;">Sent from your portfolio contact form</p>
+    </div>
+  `,
+};
 
-Name: ${name}
-Email: ${email}
-
-Message:
-${message}
-`,
-  };
 
   try {
     await transporter.sendMail(mailOptions);
