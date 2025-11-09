@@ -33,8 +33,8 @@ export default async function handler(req, res) {
   to: process.env.REACT_APP_EMAIL_USER,
   subject: `Portfolio Message: ${subject}`,
   html: `
-    <div style="font-family: Arial, sans-serif; font-size: 15px; color: #333;">
-      <h2 style="color: #007bff;">New message from your portfolio</h2>
+    <div style="font-family: Fira Code, sans-serif; font-size: 15px; color: #333;">
+      <h2>New message from your portfolio</h2>
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Subject:</strong> ${subject}</p>
