@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LayoutTemplate, Code, Award } from 'lucide-react';
+import { MonitorCheck, Code, Award } from 'lucide-react';
 import FloatingCard from '../components/FloatingCard';
 import { Link } from 'react-router-dom';
 
@@ -94,7 +94,7 @@ export default function Home({ data, name, titles, socials }) {
                 alt={name}
                 className="relative z-10 w-full h-full object-cover rounded-full shadow-2xl border-4 border-gray-700"
               />
-              <FloatingCard icon={<LayoutTemplate />} text="Design" position="top-10 -left-10" />
+              <FloatingCard icon={<MonitorCheck />} text="Debug" position="top-10 -left-10" />
               <FloatingCard icon={<Code />} text="Code" position="bottom-10 -left-16" />
               <FloatingCard icon={<Award />} text="Ideas" position="top-20 -right-10" />
             </div>
