@@ -131,7 +131,7 @@ export const portfolioData = {
         title: 'HR Assist Chatbot (Marico Internship)',
         description:
           'Developed an internal chatbot powered by FastAPI and RAG architecture to handle employee HR queries within Microsoft Teams.',
-        link: '#',
+        link: 'Private',
       },
       {
         icon: 'Chip',
