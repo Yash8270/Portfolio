@@ -11,21 +11,47 @@ export default function Contact({ data }) {
     message: '',
   });
   const [status, setStatus] = useState('');
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+
+    // Basic frontend validation
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      setError('Please fill in all required fields.');
+      return;
+    }
+
     setStatus('loading');
-    setTimeout(() => {
-      console.log('Form data:', formData);
-      setStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setStatus(''), 3000);
-    }, 2000);
+
+    try {
+      const response = await fetch('https://yash-limbachiya-portfolio.vercel.app/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setStatus(''), 4000);
+      } else {
+        setStatus('error');
+        setError(result.message || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setStatus('error');
+      setError('Network error. Please try again.');
+    }
   };
 
   return (
@@ -34,22 +60,33 @@ export default function Contact({ data }) {
         <SectionTitle title={data.title} summary={data.summary} />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Info */}
+          {/* --- Info --- */}
           <div className="bg-gray-800 p-8 rounded-lg shadow-lg">
             <h3 className="text-3xl font-bold text-white mb-6">Get in Touch</h3>
             <div className="space-y-6">
-              <InfoItem icon={<MapPin className="w-6 h-6" />} title="Location" content={data.info.location} />
-              <InfoItem icon={<Phone className="w-6 h-6" />} title="Phone" content={data.info.phone} />
-              <InfoItem icon={<Mail className="w-6 h-6" />} title="Email" content={data.info.email} />
+              <InfoItem
+                icon={<MapPin className="w-6 h-6" />}
+                title="Location"
+                content={data.info.location}
+              />
+              <InfoItem
+                icon={<Phone className="w-6 h-6" />}
+                title="Phone"
+                content={data.info.phone}
+              />
+              <InfoItem
+                icon={<Mail className="w-6 h-6" />}
+                title="Email"
+                content={data.info.email}
+              />
             </div>
           </div>
 
-          {/* Form */}
+          {/* --- Form --- */}
           <div className="bg-gray-800 p-8 rounded-lg shadow-lg">
-            <h3 className="text-3xl font-bold text-white mb-3">
-              {data.form.heading}
-            </h3>
+            <h3 className="text-3xl font-bold text-white mb-3">{data.form.heading}</h3>
             <p className="text-gray-400 mb-8">{data.form.description}</p>
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <input
@@ -89,6 +126,9 @@ export default function Contact({ data }) {
                 required
                 className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500"
               ></textarea>
+
+              {error && <p className="text-red-400 text-sm">{error}</p>}
+
               <div className="text-center">
                 <button
                   type="submit"
@@ -97,8 +137,16 @@ export default function Contact({ data }) {
                 >
                   {status === 'loading' ? 'Sending...' : 'Send Message'}
                 </button>
+
                 {status === 'success' && (
-                  <p className="text-green-400 mt-4">Your message has been sent successfully!</p>
+                  <p className="text-green-400 mt-4">
+                    Your message has been sent successfully!
+                  </p>
+                )}
+                {status === 'error' && (
+                  <p className="text-red-400 mt-4">
+                    {error || 'Failed to send message. Please try again.'}
+                  </p>
                 )}
               </div>
             </form>
