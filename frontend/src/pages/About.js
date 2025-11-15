@@ -32,8 +32,9 @@ export default function About({ data }) {
                 View My Projects <ArrowRight className="w-5 h-5" />
               </Link>
               <a
-                href="/Yash_Resume.pdf"
-                download
+                href={process.env.REACT_APP_RESUME}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 px-6 py-3 text-gray-300 hover:text-white transition-all duration-300"
               >
                 Download Resume <Download className="w-5 h-5" />
@@ -72,9 +73,14 @@ export default function About({ data }) {
           <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             <div className="hidden lg:block absolute left-0 right-0 top-4 h-0.5 bg-gray-700"></div>
             {data.timeline.map((item) => (
-              <article key={item.year} className="relative text-center md:text-left">
+              <article
+                key={item.year}
+                className="relative text-center md:text-left"
+              >
                 <div className="absolute left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 -top-1 lg:top-1.5 w-5 h-5 bg-blue-500 rounded-full border-4 border-gray-900 z-10"></div>
-                <time className="text-lg font-bold text-blue-400">{item.year}</time>
+                <time className="text-lg font-bold text-blue-400">
+                  {item.year}
+                </time>
                 <h4 className="text-xl font-semibold text-white mt-2 mb-1">
                   {item.title}
                 </h4>
