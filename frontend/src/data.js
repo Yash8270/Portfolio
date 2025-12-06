@@ -32,7 +32,7 @@ export const portfolioData = {
       'I’ve built real-world projects ranging from social platforms and task managers to AI-powered chatbots and robotics systems. My goal is to merge innovation with reliability — building solutions that actually make a difference.',
     ],
     skills: [
-      { icon: 'React', title: 'Frontend Development', description: 'Building dynamic and responsive UIs using ReactJS, Tailwind CSS, and JavaScript.' },
+      { icon: '', title: 'Frontend Development', description: 'Building dynamic and responsive UIs using ReactJS, Tailwind CSS, and JavaScript.' },
       { icon: 'Server', title: 'Backend Development', description: 'Developing scalable APIs with FastAPI, ExpressJS, and NodeJS.' },
       { icon: 'Database', title: 'Database Management', description: 'Experience with MongoDB and MySQL for optimized data modeling.' },
       { icon: 'Brain', title: 'AI & Automation', description: 'Integrating AI models into real-world apps for intelligent automation.' },
@@ -113,28 +113,28 @@ export const portfolioData = {
     summary: 'A showcase of projects across full-stack web development, AI systems, and embedded robotics.',
     projects: [
       {
-        icon: 'React',
+        // icon: 'React',
         title: 'Connectify – Social Media Web App',
         description:
           'Developed a full-stack social platform with real-time chat, JWT authentication, and RESTful APIs using MERN Stack.',
         link: 'https://github.com/Yash8270/Connectify',
       },
       {
-        icon: 'Calendar',
+        // icon: 'Calendar',
         title: 'Goal-Oriented Task Manager',
         description:
           'Created a drag-and-drop calendar-based task management tool with dynamic goal filters and persistent data storage.',
         link: 'https://github.com/Yash8270/Calendar',
       },
       {
-        icon: 'AI',
+        // icon: 'AI',
         title: 'HR Assist Chatbot (Marico Internship)',
         description:
           'Developed an internal chatbot powered by FastAPI and RAG architecture to handle employee HR queries within Microsoft Teams.',
         link: 'Private',
       },
       {
-        icon: 'Chip',
+        // icon: 'Chip',
         title: 'Autonomous Robot (Robocon)',
         description:
           'Built a PID-controlled robot using Arduino Mega, sensors, and encoders for autonomous movement and obstacle avoidance.',
