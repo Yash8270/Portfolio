@@ -41,7 +41,7 @@ export default function Projects({ data }) {
                     className="inline-flex items-center gap-2 font-medium text-blue-400 group-hover:text-blue-300 transition-colors duration-300"
                   >
                     View Project
-                    <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                    {/* <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" /> */}
                   </a>
 
                   {/* RIGHT: Live (only if exists) */}
