@@ -118,6 +118,7 @@ export const portfolioData = {
         description:
           'Developed a full-stack social platform with real-time chat, JWT authentication, and RESTful APIs using MERN Stack.',
         link: 'https://github.com/Yash8270/Connectify',
+        live: 'https://yash-limbachiya-connectify.vercel.app',
       },
       {
         // icon: 'Calendar',
@@ -139,6 +140,7 @@ export const portfolioData = {
         description:
           'Built a PID-controlled robot using Arduino Mega, sensors, and encoders for autonomous movement and obstacle avoidance.',
         link: 'https://github.com/Yash8270/Automation-code',
+        live: 'https://www.linkedin.com/posts/yash-limbachiya-4b0001254_robotics-arduino-automation-activity-7221221564845817856-7tyK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD6mCYQB8T4gG1bQvWblhCaD7e2FCNTFx2k',
       },
     ],
   },
@@ -164,7 +166,7 @@ export const portfolioData = {
   socials: [
     { name: 'Instagram', icon: <Instagram className="w-4 h-4" />, url: 'https://instagram.com/yashlimbachiya_8' },
     { name: 'WhatsApp', icon: <MessageCircle className="w-4 h-4" />, url: 'https://wa.me/919326754955' },
-    { name: 'LinkedIn', icon: <Linkedin className="w-4 h-4" />, url: 'https://linkedin.com/in/yash-limbachiya-4b0001254' },
+    { name: 'LinkedIn', icon: <Linkedin className="w-4 h-4" />, url: 'https://www.linkedin.com/in/yash-limbachiya-4b0001254' },
     { name: 'GitHub', icon: <Github className="w-4 h-4" />, url: 'https://github.com/Yash8270' },
   ],
 };

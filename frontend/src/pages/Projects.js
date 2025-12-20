@@ -26,21 +26,36 @@ export default function Projects({ data }) {
               </h3>
               <p className="text-gray-400 mb-6">{project.description}</p>
 
-              {/* --- Project Link or Private Notice --- */}
+              {/* --- Project Links --- */}
               {project.link?.toLowerCase() === 'private' ? (
                 <span className="text-red-400 font-medium italic">
                   Private for company
                 </span>
               ) : (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-medium text-blue-400 group-hover:text-blue-300 transition-colors duration-300"
-                >
-                  View Project{' '}
-                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
+                <div className="flex items-center justify-between">
+                  {/* LEFT: View Project */}
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-medium text-blue-400 group-hover:text-blue-300 transition-colors duration-300"
+                  >
+                    View Project
+                    <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  </a>
+
+                  {/* RIGHT: Live (only if exists) */}
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-green-400 font-medium hover:text-green-300 transition-colors duration-300"
+                    >
+                      Link
+                    </a>
+                  )}
+                </div>
               )}
             </div>
           ))}
