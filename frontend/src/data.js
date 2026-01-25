@@ -10,6 +10,7 @@ import {
   Linkedin,
   Github,
   MessageCircle,
+  Code
 } from 'lucide-react';
 
 export const portfolioData = {
@@ -164,7 +165,7 @@ export const portfolioData = {
   },
 
   socials: [
-    { name: 'Instagram', icon: <Instagram className="w-4 h-4" />, url: 'https://instagram.com/yashlimbachiya_8' },
+    { name: 'LeetCode', icon: <Code className="w-4 h-4" />, url: 'https://leetcode.com/u/Yash_Limbachiya/' },
     { name: 'WhatsApp', icon: <MessageCircle className="w-4 h-4" />, url: 'https://wa.me/919326754955' },
     { name: 'LinkedIn', icon: <Linkedin className="w-4 h-4" />, url: 'https://www.linkedin.com/in/yash-limbachiya-4b0001254' },
     { name: 'GitHub', icon: <Github className="w-4 h-4" />, url: 'https://github.com/Yash8270' },

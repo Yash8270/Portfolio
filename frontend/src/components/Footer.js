@@ -12,10 +12,15 @@ export default function Footer({ copyright, socials }) {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-blue-400 transform hover:scale-110 transition-all duration-300"
+              className="group relative text-gray-400 hover:text-blue-400 transform hover:scale-110 transition-all duration-300"
               aria-label={social.name}
             >
               {React.cloneElement(social.icon, { className: 'w-6 h-6' })}
+              
+              {/* --- Tooltip --- */}
+              <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap border border-gray-600 shadow-xl">
+                {social.name}
+              </span>
             </a>
           ))}
         </div>
