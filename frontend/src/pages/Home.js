@@ -55,7 +55,7 @@ export default function Home({ data, name, titles, socials }) {
     <section
       id="home"
       // CHANGED: Adjusted padding for mobile (py-12) vs desktop (min-h screen)
-      className="hero-section min-h-[calc(100vh-80px)] py-12 sm:py-24 flex items-center justify-center animate-fadeIn overflow-hidden"
+      className="hero-section min-h-[calc(100vh-80px)] py-12 sm:py-12 flex items-center justify-center animate-fadeIn overflow-hidden"
     >
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* CHANGED: gap-12 for better separation on mobile */}
