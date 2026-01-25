@@ -1,6 +1,5 @@
 import React from 'react';
 import SectionTitle from '../components/SectionTitle';
-import { ArrowRight } from 'lucide-react';
 import { iconMap } from '../IconMap';
 
 export default function Projects({ data }) {

@@ -6,7 +6,6 @@ import {
   Briefcase,
   FileText,
   Mail,
-  Instagram,
   Linkedin,
   Github,
   MessageCircle,
