@@ -73,7 +73,7 @@ export const portfolioData = {
     experience: [
       {
         role: 'Software Development Intern',
-        years: 'June 2025 – Present',
+        years: 'June 2025 – Jan 2026',
         company: 'Marico Limited',
         duties: [
           'Developing an AI-powered HR Assist chatbot using FastAPI and a RAG model for policy-related employee queries.',
