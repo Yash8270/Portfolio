@@ -60,7 +60,7 @@ export const portfolioData = {
       {
         degree: '12th HSC',
         years: '2022',
-        institution: 'Bhavans College, Mumbai',
+        institution: "Bharatiya Vidya Bhavan's Hazarimal Somani College of Arts & Science",
         description: 'Percentage: 80.5%',
       },
       {
