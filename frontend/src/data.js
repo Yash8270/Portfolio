@@ -142,6 +142,13 @@ export const portfolioData = {
         link: 'https://github.com/Yash8270/Automation-code',
         live: 'https://www.linkedin.com/posts/yash-limbachiya-4b0001254_robotics-arduino-automation-activity-7221221564845817856-7tyK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD6mCYQB8T4gG1bQvWblhCaD7e2FCNTFx2k',
       },
+       {
+        // icon: 'Calendar',
+        title: 'AI Fitness App',
+        description:
+          'A personalized nutrition app that calculates daily calories and macronutrients (protein, carbohydrates, and fats) based on user details, activity level, and health goals to support a balanced and healthy lifestyle.',
+        link: 'https://github.com/Yash8270/AI-Fitness-App',
+      },
     ],
   },
 
