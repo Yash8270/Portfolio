@@ -148,6 +148,7 @@ export const portfolioData = {
         description:
           'A personalized nutrition app that calculates daily calories and macronutrients (protein, carbohydrates, and fats) based on user details, activity level, and health goals to support a balanced and healthy lifestyle.',
         link: 'https://github.com/Yash8270/AI-Fitness-App',
+        live: 'https://yash-limbachiya-fitmetrics.vercel.app',
       },
     ],
   },
