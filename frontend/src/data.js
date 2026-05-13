@@ -120,6 +120,14 @@ export const portfolioData = {
         link: 'https://github.com/Yash8270/Connectify',
         live: 'https://yash-limbachiya-connectify.vercel.app',
       },
+       {
+        // icon: 'React',
+        title: 'Multichain Cross Transaction Bridge System',
+        description:
+          'Designed a secure cross-chain bridge using ReactJS, FastAPI, and MongoDB to facilitate seamless asset transfers between different blockchain networks.',
+        link: 'https://github.com/Yash8270/Multichain-Cross-Transaction-Bridge-System',
+        // live: 'https://yash-limbachiya-connectify.vercel.app',
+      },
       {
         // icon: 'Calendar',
         title: 'Goal-Oriented Task Manager',
