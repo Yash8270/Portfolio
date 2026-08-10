@@ -2,6 +2,8 @@ import React from 'react';
 import { CheckCircle, Award, Book } from 'lucide-react';
 import SectionTitle from '../components/SectionTitle';
 import SkillBar from '../components/SkillBar';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Download } from 'lucide-react';
 
 export default function Resume({ data }) {
   return (
@@ -65,6 +67,19 @@ export default function Resume({ data }) {
                 ))}
               </article>
             ))}
+
+            {/* --- Styled Button Container --- */}
+            <div className="flex flex-col sm:flex-row gap-4 mt-12 pt-4 border-t border-gray-800">
+              <a 
+                href={process.env.REACT_APP_RESUME} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold shadow-lg shadow-blue-900/30 hover:bg-blue-500 hover:scale-105 active:scale-95 transition-all duration-300"
+              >
+                Download Resume 
+                <Download className="w-5 h-5" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

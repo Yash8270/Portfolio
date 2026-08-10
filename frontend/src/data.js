@@ -103,8 +103,11 @@ export const portfolioData = {
       { name: 'ReactJS / JavaScript', level: 95 },
       { name: 'Python / FastAPI', level: 85 },
       { name: 'NodeJS / Express', level: 90 },
-      { name: 'MongoDB / MySQL', level: 90 },
+      { name: 'MongoDB and  MySQL', level: 90 },
       { name: 'Machine Learning / AI', level: 80 },
+      { name: 'Arduino / Embedded Systems', level: 85 },
+      {name: 'Java Spring Boot', level: 70},
+      {name: 'Data Structures & Algorithms', level: 75},
     ],
   },
 
@@ -112,6 +115,15 @@ export const portfolioData = {
     title: 'My Projects',
     summary: 'A showcase of projects across full-stack web development, AI systems, and embedded robotics.',
     projects: [
+       {
+        // icon: 'React',
+        title: 'Smart Logistics System',
+        description:
+          'Built a logistics platform with Admin, Driver, and Customer portals covering order management, fleet tracking, and route optimization.',
+        link: 'https://github.com/Yash8270/Smart-Logistics-System',
+        // live: 'https://yash-limbachiya-connectify.vercel.app',
+      },
+
       {
         // icon: 'React',
         title: 'Connectify – Social Media Web App',
