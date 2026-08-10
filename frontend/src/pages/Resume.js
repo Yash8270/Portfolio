@@ -2,8 +2,7 @@ import React from 'react';
 import { CheckCircle, Award, Book } from 'lucide-react';
 import SectionTitle from '../components/SectionTitle';
 import SkillBar from '../components/SkillBar';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Download } from 'lucide-react';
+import { Download } from 'lucide-react';
 
 export default function Resume({ data }) {
   return (
