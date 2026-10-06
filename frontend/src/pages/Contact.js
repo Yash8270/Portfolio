@@ -59,36 +59,48 @@ export default function Contact({ data }) {
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionTitle title={data.title} summary={data.summary} />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* --- Info --- */}
-          <div className="bg-gray-800 p-8 rounded-lg shadow-lg">
-            <h3 className="text-3xl font-bold text-white mb-6">Get in Touch</h3>
-            <div className="space-y-6">
-              <InfoItem
-                icon={<MapPin className="w-6 h-6" />}
-                title="Location"
-                content={data.info.location}
-              />
-              <InfoItem
-                icon={<Phone className="w-6 h-6" />}
-                title="Phone"
-                content={data.info.phone}
-              />
-              <InfoItem
-                icon={<Mail className="w-6 h-6" />}
-                title="Email"
-                content={data.info.email}
-              />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+          {/* --- Info Bento Card --- */}
+          <div className="bento-card p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono text-xs font-semibold uppercase tracking-wider mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                Direct Channels
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-6">Get in Touch</h3>
+              <div className="space-y-4">
+                <InfoItem
+                  icon={<MapPin className="w-5 h-5" />}
+                  title="Location"
+                  content={data.info.location}
+                />
+                <InfoItem
+                  icon={<Phone className="w-5 h-5" />}
+                  title="Phone"
+                  content={data.info.phone}
+                />
+                <InfoItem
+                  icon={<Mail className="w-5 h-5" />}
+                  title="Email"
+                  content={data.info.email}
+                />
+              </div>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-white/[0.08]">
+              <p className="text-xs text-slate-400 leading-relaxed font-mono">
+                Open to full-stack, cloud infrastructure, AI integration, and freelance software development.
+              </p>
             </div>
           </div>
 
-          {/* --- Form --- */}
-          <div className="bg-gray-800 p-8 rounded-lg shadow-lg">
-            <h3 className="text-3xl font-bold text-white mb-3">{data.form.heading}</h3>
-            <p className="text-gray-400 mb-8">{data.form.description}</p>
+          {/* --- Form Bento Card --- */}
+          <div className="bento-card p-6 sm:p-8">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2">{data.form.heading}</h3>
+            <p className="text-sm sm:text-base text-slate-400 mb-6 leading-relaxed">{data.form.description}</p>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
                   type="text"
                   name="name"
@@ -96,7 +108,7 @@ export default function Contact({ data }) {
                   onChange={handleChange}
                   placeholder="Your Name"
                   required
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 bg-white/[0.03] border border-white/[0.1] rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
                 />
                 <input
                   type="email"
@@ -105,7 +117,7 @@ export default function Contact({ data }) {
                   onChange={handleChange}
                   placeholder="Your Email"
                   required
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 bg-white/[0.03] border border-white/[0.1] rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
                 />
               </div>
               <input
@@ -115,38 +127,42 @@ export default function Contact({ data }) {
                 onChange={handleChange}
                 placeholder="Subject"
                 required
-                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-3 bg-white/[0.03] border border-white/[0.1] rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
               />
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                rows="6"
+                rows="5"
                 placeholder="Message"
                 required
-                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-3 bg-white/[0.03] border border-white/[0.1] rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 resize-none"
               ></textarea>
 
-              {error && <p className="text-red-400 text-sm">{error}</p>}
+              {error && (
+                <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs sm:text-sm text-center">
+                  {error}
+                </div>
+              )}
 
-              <div className="text-center">
+              <div className="pt-2">
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="px-8 py-3 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition-all duration-300 disabled:opacity-50"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/25 border border-blue-400/30 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === 'loading' ? 'Sending...' : 'Send Message'}
                 </button>
 
                 {status === 'success' && (
-                  <p className="text-green-400 mt-4">
+                  <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs sm:text-sm text-center mt-4">
                     Your message has been sent successfully!
-                  </p>
+                  </div>
                 )}
                 {status === 'error' && (
-                  <p className="text-red-400 mt-4">
+                  <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs sm:text-sm text-center mt-4">
                     {error || 'Failed to send message. Please try again.'}
-                  </p>
+                  </div>
                 )}
               </div>
             </form>

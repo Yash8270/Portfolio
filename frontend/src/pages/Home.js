@@ -54,56 +54,60 @@ export default function Home({ data, name, titles, socials }) {
   return (
     <section
       id="home"
-      // CHANGED: Adjusted padding for mobile (py-12) vs desktop (min-h screen)
-      className="hero-section min-h-[calc(100vh-80px)] py-12 sm:py-12 flex items-center justify-center animate-fadeIn overflow-hidden"
+      className="hero-section min-h-[calc(100vh-80px)] py-12 sm:py-16 flex items-center justify-center animate-fadeIn overflow-hidden relative"
     >
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* CHANGED: gap-12 for better separation on mobile */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-12 items-center">
           
           {/* --- Text Section --- */}
-          {/* CHANGED: order-2 lg:order-1 to ensure text can be below image if desired, 
-              but usually Text First (default) is better for SEO/Reading. Keeping default order. */}
           <div className="text-center lg:text-left z-10">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
-              {data.intro} <br />
-              <span className="text-blue-400">{name}</span>
+            {/* Status / Eyebrow pill */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono text-xs font-semibold uppercase tracking-wider mb-5">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+              {data.intro}
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-4">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-300">
+                {name}
+              </span>
             </h1>
-            <h2 className="text-xl sm:text-3xl font-medium text-gray-300 mb-6 h-[40px] flex items-center justify-center lg:justify-start">
-              Passionate{' '}
-              <span className="text-white font-semibold ml-2">
+
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-medium text-slate-300 mb-6 h-[40px] flex items-center justify-center lg:justify-start">
+              <span className="text-slate-400">Passionate</span>
+              <span className="text-blue-400 font-semibold font-mono ml-2.5">
                 {`${titles[index].substring(0, subIndex)}`}
               </span>
-              <span className="blink-caret text-blue-400">|</span>
+              <span className="blink-caret text-blue-400 font-mono font-bold ml-0.5">|</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-400 mb-8 max-w-lg mx-auto lg:mx-0">
+
+            <p className="text-base sm:text-lg text-slate-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed font-normal">
               {data.description}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
               <Link
                 to="/projects"
-                className="px-8 py-3 bg-blue-500 text-white font-medium rounded-lg shadow-lg hover:bg-blue-600 transform hover:-translate-y-0.5 transition-all duration-300"
+                className="px-7 py-3.5 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/25 border border-blue-400/30 transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 text-center"
               >
                 View My Projects
               </Link>
               <Link
                 to="/contact"
-                className="px-8 py-3 bg-transparent border-2 border-blue-400 text-blue-400 font-medium rounded-lg hover:bg-blue-400 hover:text-gray-900 transition-all duration-300"
+                className="px-7 py-3.5 bg-white/[0.03] hover:bg-white/[0.08] text-slate-200 hover:text-white font-semibold rounded-xl border border-white/[0.12] hover:border-blue-400/40 backdrop-blur-md transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 text-center"
               >
                 Get In Touch
               </Link>
             </div>
             
             {/* --- Social Icons with Bubble Animation --- */}
-            <div className="flex justify-center lg:justify-start space-x-8 h-16">
+            <div className="flex justify-center lg:justify-start items-center space-x-4 h-16">
               {socials.map((social, i) => (
                 <a
                   key={social.name}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  // Handle Hover Logic
                   onMouseEnter={() => {
                     setIsHoveringSocials(true);
                     setActiveSocialIndex(i); 
@@ -111,8 +115,10 @@ export default function Home({ data, name, titles, socials }) {
                   onMouseLeave={() => {
                     setIsHoveringSocials(false); 
                   }}
-                  className={`relative flex flex-col items-center group text-gray-400 hover:text-blue-400 transform transition-all duration-300 ${
-                    activeSocialIndex === i ? 'text-blue-400 scale-110' : ''
+                  className={`relative p-3 rounded-xl border transition-all duration-200 ${
+                    activeSocialIndex === i
+                      ? 'text-blue-400 bg-blue-500/15 border-blue-500/30 scale-105 shadow-md shadow-blue-500/10'
+                      : 'text-slate-400 hover:text-slate-200 border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05]'
                   }`}
                   aria-label={social.name}
                 >
@@ -120,15 +126,15 @@ export default function Home({ data, name, titles, socials }) {
 
                   {/* --- Bubble Tooltip (Below) --- */}
                   <span
-                    className={`absolute top-10 px-3 py-1 bg-gray-800 text-white text-xs font-bold rounded-xl border border-gray-600 shadow-xl z-50 whitespace-nowrap
-                    transition-all duration-300 ease-out transform origin-top
+                    className={`absolute top-12 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-[#0e1422] text-slate-200 text-xs font-medium rounded-lg border border-white/10 shadow-2xl z-50 whitespace-nowrap pointer-events-none
+                    transition-all duration-200 ease-out transform
                     ${
                       activeSocialIndex === i 
                         ? 'opacity-100 scale-100 translate-y-0' 
-                        : 'opacity-0 scale-0 -translate-y-2'
+                        : 'opacity-0 scale-95 -translate-y-1'
                     }`}
                   >
-                    <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 border-t border-l border-gray-600 transform rotate-45"></span>
+                    <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#0e1422] border-t border-l border-white/10 transform rotate-45"></span>
                     {social.name}
                   </span>
                 </a>
@@ -138,33 +144,34 @@ export default function Home({ data, name, titles, socials }) {
 
           {/* --- Image Section --- */}
           <div className="flex justify-center items-center relative">
-            {/* CHANGED: Adjusted width/height for mobile (w-64 h-64) -> tablet (w-80) -> desktop (w-96) */}
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full blur-2xl opacity-30"></div>
-              <img
-                src={data.imageUrl}
-                alt={name}
-                className="relative z-10 w-full h-full object-cover rounded-full shadow-2xl border-4 border-gray-700"
-              />
+              {/* Radial gradient glow halo */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/30 via-indigo-500/20 to-cyan-400/20 rounded-full blur-3xl opacity-60"></div>
               
-              {/* CHANGED: Adjusted Floating Cards positions for mobile to prevent overflow 
-                  Added 'scale-90' on mobile to make them smaller.
-                  Moved positions closer to center on mobile (e.g., -left-0 instead of -left-10) 
-              */}
+              {/* Profile Image container with decorative ring */}
+              <div className="relative z-10 w-full h-full p-2.5 rounded-full border border-white/[0.12] bg-white/[0.02] backdrop-blur-md shadow-2xl">
+                <img
+                  src={data.imageUrl}
+                  alt={name}
+                  className="w-full h-full object-cover rounded-full shadow-inner border border-white/10"
+                />
+              </div>
+              
+              {/* Floating Cards */}
               <FloatingCard 
                 icon={<MonitorCheck />} 
                 text="Debug" 
-                position="top-0 -left-2 sm:top-10 sm:-left-10 scale-90 sm:scale-100 origin-bottom-right" 
+                position="top-1 -left-2 sm:top-8 sm:-left-8 scale-90 sm:scale-100 origin-bottom-right" 
               />
               <FloatingCard 
                 icon={<Code />} 
                 text="Code" 
-                position="bottom-4 -left-2 sm:bottom-10 sm:-left-16 scale-90 sm:scale-100 origin-top-right" 
+                position="bottom-3 -left-2 sm:bottom-8 sm:-left-12 scale-90 sm:scale-100 origin-top-right" 
               />
               <FloatingCard 
                 icon={<Award />} 
                 text="Ideas" 
-                position="top-8 -right-4 sm:top-20 sm:-right-10 scale-90 sm:scale-100 origin-bottom-left" 
+                position="top-6 -right-4 sm:top-16 sm:-right-8 scale-90 sm:scale-100 origin-bottom-left" 
               />
             </div>
           </div>

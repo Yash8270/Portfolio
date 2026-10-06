@@ -15,7 +15,7 @@ export default function App() {
     <Router>
       <ScrollToTop />  {/* ✅ Always scrolls to top on route change */}
 
-      <div className="min-h-screen bg-gray-900 text-gray-200 font-inter">
+      <div className="min-h-screen bg-[#080b11] text-slate-200 font-sans relative">
         <Header navItems={navItems} socials={portfolioData.socials} />
 
         <main className="pt-20 transition-all duration-300">

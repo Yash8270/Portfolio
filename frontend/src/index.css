@@ -3,56 +3,271 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Define custom animations */
+/* ==================================================
+   DESIGN SYSTEM CSS VARIABLES
+   ================================================== */
+:root {
+  --bg-primary: #080b11;
+  --bg-surface: #0e1422;
+  --bg-surface-elevated: #151d30;
+  --bg-surface-glass: rgba(14, 20, 34, 0.75);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-default: rgba(255, 255, 255, 0.12);
+  --border-hover: rgba(96, 165, 250, 0.35);
+  --primary-accent: #3b82f6;
+  --primary-accent-hover: #2563eb;
+  --primary-accent-glow: rgba(59, 130, 246, 0.2);
+  --hover-bg: rgba(255, 255, 255, 0.04);
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}
+
 @layer base {
-  body {
-    /* Apply a default font, assuming "Inter" is imported in your index.html or via a font package */
-    font-family: 'Inter', sans-serif;
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
   }
 
-  /* --- Animation for the typing caret --- */
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Subtle ambient background glow & modern grid pattern */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.12) 0%, transparent 55%),
+      radial-gradient(circle at 85% 30%, rgba(99, 102, 241, 0.06) 0%, transparent 45%),
+      radial-gradient(circle at 15% 70%, rgba(14, 165, 233, 0.05) 0%, transparent 45%),
+      radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 32px 32px;
+    z-index: 0;
+  }
+
+  /* Custom Modern Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #080b11;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    border: 2px solid #080b11;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  /* Selection highlight */
+  ::selection {
+    background: rgba(59, 130, 246, 0.35);
+    color: #ffffff;
+  }
+}
+
+/* ==================================================
+   BENTO UI & COMPONENT LAYER
+   ================================================== */
+@layer components {
+  /* Bento Card Surface */
+  .bento-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 1rem;
+    box-shadow: 
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.05),
+      0 4px 20px -2px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bento-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    box-shadow: 
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
+      0 16px 36px -8px rgba(0, 0, 0, 0.6),
+      0 0 24px -4px rgba(59, 130, 246, 0.15);
+  }
+
+  /* Bento Header / Glass Surface */
+  .bento-glass {
+    background-color: var(--bg-surface-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  /* Bento Pill Badge */
+  .bento-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: 'Fira Code', monospace;
+    border-radius: 9999px;
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    letter-spacing: 0.025em;
+  }
+
+  /* Modern Primary Button */
+  .bento-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+    color: #ffffff;
+    box-shadow: 
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+      0 4px 14px 0 rgba(37, 99, 235, 0.35);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+  }
+
+  .bento-btn-primary:hover {
+    background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 100%);
+    box-shadow: 
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.3),
+      0 6px 20px 0 rgba(37, 99, 235, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .bento-btn-primary:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px 0 rgba(37, 99, 235, 0.3);
+  }
+
+  /* Modern Secondary / Outline Button */
+  .bento-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .bento-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(96, 165, 250, 0.4);
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .bento-btn-secondary:active {
+    transform: translateY(1px);
+  }
+
+  /* Form Input Styling */
+  .bento-input {
+    width: 100%;
+    padding: 0.875rem 1.125rem;
+    background: rgba(14, 20, 34, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 0.75rem;
+    color: #ffffff;
+    font-size: 0.9375rem;
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .bento-input::placeholder {
+    color: #64748b;
+  }
+
+  .bento-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 
+      inset 0 2px 4px 0 rgba(0, 0, 0, 0.25),
+      0 0 0 3px rgba(59, 130, 246, 0.2);
+  }
+}
+
+/* ==================================================
+   ANIMATIONS & KEYFRAMES
+   ================================================== */
+@layer utilities {
   .blink-caret {
     animation: blink 1s infinite;
   }
 
-  /* --- Animation for floating cards --- */
   .animate-float {
-    animation: float 3s ease-in-out infinite;
+    animation: float 4s ease-in-out infinite;
   }
 
-  /* --- Animation for page sections fading in --- */
   .animate-fadeIn {
-    animation: fadeIn 0.8s ease-out;
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
+}
 
-  @keyframes blink {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
   }
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
+  50% {
+    opacity: 0;
   }
+}
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

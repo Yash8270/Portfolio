@@ -36,20 +36,20 @@ export default function Header({ navItems, socials }) {
   }, [isHoveringSocials, socials.length]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md shadow-md">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#080b11]/80 backdrop-blur-xl border-b border-white/[0.08] transition-all duration-300">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* --- Navigation (Desktop) --- */}
-          <nav className="hidden md:flex space-x-6">
+          <nav className="hidden md:flex items-center space-x-1 p-1 bg-white/[0.03] border border-white/[0.06] rounded-full backdrop-blur-md">
             {navItems.map((item) => (
               <NavLink
                 key={item.name}
                 to={item.path}
                 className={({ isActive }) =>
-                  `relative text-sm font-medium transition-colors duration-300 ${
+                  `relative px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
                     isActive
-                      ? 'text-blue-400'
-                      : 'text-gray-300 hover:text-white'
+                      ? 'bg-blue-500/15 text-blue-400 border border-blue-500/30 shadow-sm'
+                      : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.05] border border-transparent'
                   }`
                 }
               >
@@ -59,14 +59,13 @@ export default function Header({ navItems, socials }) {
           </nav>
 
           {/* --- Social Icons (Desktop) --- */}
-          <div className="hidden md:flex items-center space-x-5">
+          <div className="hidden md:flex items-center space-x-2">
             {socials.map((social, i) => (
               <a
                 key={social.name}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                // Handle Hover Logic
                 onMouseEnter={() => {
                   setIsHoveringSocials(true);
                   setActiveSocialIndex(i);
@@ -74,23 +73,24 @@ export default function Header({ navItems, socials }) {
                 onMouseLeave={() => {
                   setIsHoveringSocials(false);
                 }}
-                className={`relative flex flex-col items-center group text-gray-400 hover:text-blue-400 transition-colors duration-300 ${
-                   activeSocialIndex === i ? 'text-blue-400' : ''
+                className={`relative p-2.5 rounded-xl border border-transparent transition-all duration-200 ${
+                  activeSocialIndex === i
+                    ? 'text-blue-400 bg-blue-500/10 border-blue-500/20 scale-105'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.05]'
                 }`}
+                aria-label={social.name}
               >
                 {socialIcons[social.name] || social.icon}
-                
-                {/* --- Tooltip (Desktop: Positioned Below) --- */}
+
+                {/* --- Tooltip (Desktop) --- */}
                 <span
-                  className={`absolute top-10 px-3 py-1 bg-gray-800 text-white text-xs font-bold rounded-xl border border-gray-600 shadow-xl whitespace-nowrap
-                  transition-all duration-300 ease-out transform origin-top
-                  ${
-                    activeSocialIndex === i 
-                      ? 'opacity-100 scale-100 translate-y-0' 
-                      : 'opacity-0 scale-0 -translate-y-2'
+                  className={`absolute top-12 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-[#0e1422] text-slate-200 text-xs font-medium rounded-lg border border-white/10 shadow-2xl whitespace-nowrap pointer-events-none transition-all duration-200 ease-out z-50 ${
+                    activeSocialIndex === i
+                      ? 'opacity-100 scale-100 translate-y-0'
+                      : 'opacity-0 scale-95 -translate-y-1'
                   }`}
                 >
-                  <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 border-t border-l border-gray-600 transform rotate-45"></span>
+                  <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#0e1422] border-t border-l border-white/10 transform rotate-45"></span>
                   {social.name}
                 </span>
               </a>
@@ -101,9 +101,10 @@ export default function Header({ navItems, socials }) {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-gray-400 hover:text-white focus:outline-none"
+              className="p-2.5 rounded-xl border border-white/[0.08] bg-white/[0.03] text-slate-300 hover:text-white hover:bg-white/[0.08] transition-all"
+              aria-label="Toggle Menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -111,21 +112,21 @@ export default function Header({ navItems, socials }) {
 
       {/* --- Mobile Menu --- */}
       <div
-        className={`md:hidden absolute top-20 left-0 right-0 bg-gray-800 shadow-lg overflow-hidden transition-all duration-500 ease-in-out ${
-          isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+        className={`md:hidden absolute top-20 left-0 right-0 bg-[#0c101a]/95 backdrop-blur-2xl border-b border-white/10 shadow-2xl overflow-hidden transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen ? 'max-h-[500px] opacity-100 py-4' : 'max-h-0 opacity-0 py-0'
         }`}
       >
-        <div className="flex flex-col space-y-2 px-4 py-4">
+        <div className="flex flex-col space-y-1 px-4">
           {navItems.map((item) => (
             <NavLink
               key={item.name}
               to={item.path}
               onClick={() => setIsMobileMenuOpen(false)}
               className={({ isActive }) =>
-                `block px-4 py-2 rounded-md text-base font-medium ${
+                `block px-4 py-2.5 rounded-xl text-base font-medium transition-all duration-200 ${
                   isActive
-                    ? 'bg-blue-500 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                    ? 'bg-blue-500/15 text-blue-400 border border-blue-500/30'
+                    : 'text-slate-300 hover:bg-white/[0.05] hover:text-white border border-transparent'
                 }`
               }
             >
@@ -134,46 +135,25 @@ export default function Header({ navItems, socials }) {
           ))}
 
           {/* --- Social Icons (Mobile Section) --- */}
-          <div className="flex justify-center space-x-8 pt-6 pb-2 border-t border-gray-700">
+          <div className="flex justify-center space-x-6 pt-5 pb-2 border-t border-white/[0.08] mt-2">
             {socials.map((social, i) => (
               <a
                 key={social.name}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                // Handle Mobile Touch/Hover
-                onMouseEnter={() => {
-                  setIsHoveringSocials(true);
-                  setActiveSocialIndex(i);
-                }}
-                onMouseLeave={() => {
-                  setIsHoveringSocials(false);
-                }}
                 onTouchStart={() => {
                   setIsHoveringSocials(true);
                   setActiveSocialIndex(i);
                 }}
-                className={`relative flex flex-col items-center group text-gray-400 hover:text-blue-400 transition-colors duration-300 ${
-                  activeSocialIndex === i ? 'text-blue-400' : ''
+                className={`p-2.5 rounded-xl border transition-all duration-200 ${
+                  activeSocialIndex === i
+                    ? 'text-blue-400 bg-blue-500/15 border-blue-500/30'
+                    : 'text-slate-400 hover:text-white border-white/[0.06] bg-white/[0.02]'
                 }`}
+                aria-label={social.name}
               >
                 {socialIcons[social.name] || social.icon}
-
-                {/* --- Tooltip (Mobile: Positioned ABOVE) --- */}
-                {/* We use -top-12 to push it UP so it doesn't get cut off by the menu bottom */}
-                <span
-                  className={`absolute -top-12 px-3 py-1 bg-gray-700 text-white text-xs font-bold rounded-xl border border-gray-600 shadow-xl whitespace-nowrap
-                  transition-all duration-300 ease-out transform origin-bottom
-                  ${
-                    activeSocialIndex === i 
-                      ? 'opacity-100 scale-100 translate-y-0' 
-                      : 'opacity-0 scale-0 translate-y-2'
-                  }`}
-                >
-                  {/* Arrow pointing DOWN */}
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-700 border-b border-r border-gray-600 transform rotate-45"></span>
-                  {social.name}
-                </span>
               </a>
             ))}
           </div>

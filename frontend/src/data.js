@@ -115,6 +115,13 @@ export const portfolioData = {
     title: 'My Projects',
     summary: 'A showcase of projects across full-stack web development, AI systems, and embedded robotics.',
     projects: [
+      {
+        title: 'VSM Studio Application',
+        description:
+          'VSM Studio is a professional Value Stream Mapping platform that lets users create, edit, and visualize manufacturing VSMs, either manually or by importing Excel/JSON data. It provides interactive process flows, inventory, metrics, timelines, validation, project management, and export capabilities in one application.',
+        link: 'https://github.com/Yash8270/Value-Stream-Mapping',
+        live: 'https://vsm-studio.duckdns.org',
+      },
        {
         // icon: 'React',
         title: 'Smart Logistics System',
