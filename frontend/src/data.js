@@ -22,6 +22,27 @@ export const portfolioData = {
     imageUrl: profile,
   },
 
+  services: [
+    {
+      title: 'Website Development',
+      description: 'End-to-end full-stack web applications featuring modern responsive UI/UX, reusable React architectures, clean codebases, and high performance.',
+      tags: ['ReactJS', 'Tailwind CSS', 'Full-Stack Web', 'Responsive UI'],
+      icon: 'Globe',
+    },
+    {
+      title: 'Database Development',
+      description: 'Designing and optimizing relational (MySQL) and NoSQL (MongoDB) databases with scalable schema modeling, query tuning, and reliable data integrity.',
+      tags: ['MongoDB', 'MySQL', 'Schema Modeling', 'Query Optimization'],
+      icon: 'Database',
+    },
+    {
+      title: 'Cloud Application Development',
+      description: 'Building and deploying cloud-native backends and microservices with FastAPI, Docker containerization, AWS cloud hosting, and automated CI/CD.',
+      tags: ['AWS', 'Docker', 'FastAPI', 'Cloud & CI/CD'],
+      icon: 'Cloud',
+    },
+  ],
+
   about: {
     title: 'About Me',
     greeting: 'Hey there!',

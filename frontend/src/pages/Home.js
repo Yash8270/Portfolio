@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { MonitorCheck, Code, Award } from 'lucide-react';
+import { MonitorCheck, Code, Award, ArrowRight, Sparkles } from 'lucide-react';
 import FloatingCard from '../components/FloatingCard';
 import { Link } from 'react-router-dom';
+import { iconMap } from '../IconMap';
 
-export default function Home({ data, name, titles, socials }) {
+export default function Home({ data, name, titles, socials, services }) {
   // --- Typed Text State ---
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
@@ -52,7 +53,8 @@ export default function Home({ data, name, titles, socials }) {
   }, [isHoveringSocials, socials.length]);
 
   return (
-    <section
+    <>
+      <section
       id="home"
       className="hero-section min-h-[calc(100vh-80px)] py-12 sm:py-16 flex items-center justify-center animate-fadeIn overflow-hidden relative"
     >
@@ -177,6 +179,91 @@ export default function Home({ data, name, titles, socials }) {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+
+      {/* --- Services & Solutions (Bento Grid) --- */}
+      {services && services.length > 0 && (
+        <section id="services" className="py-20 border-t border-white/[0.06] relative">
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {/* Header */}
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono text-xs font-semibold uppercase tracking-wider mb-4">
+                <Sparkles className="w-3.5 h-3.5" />
+                Technical Services
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
+                What I Provide
+              </h2>
+              <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
+                Specialized engineering services delivering full-stack web applications, resilient database architectures, and scalable cloud solutions.
+              </p>
+            </div>
+
+            {/* Services Bento Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-12">
+              {services.map((service) => (
+                <div
+                  key={service.title}
+                  className="bento-card p-7 sm:p-8 flex flex-col justify-between group relative"
+                >
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
+                  <div>
+                    <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-6 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-300">
+                      {iconMap[service.icon] || iconMap.default}
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-3 group-hover:text-blue-300 transition-colors">
+                      {service.title}
+                    </h3>
+
+                    <p className="text-sm sm:text-base text-slate-400 leading-relaxed mb-6">
+                      {service.description}
+                    </p>
+                  </div>
+
+                  <div>
+                    {service.tags && (
+                      <div className="flex flex-wrap gap-2 pt-4 border-t border-white/[0.06]">
+                        {service.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="font-mono text-xs font-medium px-2.5 py-1 rounded-md bg-white/[0.03] text-slate-300 border border-white/[0.08]"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* --- Get In Touch With Me Bento Banner --- */}
+            <div className="bento-card p-8 sm:p-12 relative overflow-hidden group">
+              <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10 text-center lg:text-left">
+                <div className="max-w-2xl">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2">
+                    Have a project or technology requirement?
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+                    Whether you need a full-stack web application, a database redesign, or AWS cloud deployment, let’s discuss how I can help bring your ideas to life.
+                  </p>
+                </div>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/25 border border-blue-400/30 whitespace-nowrap transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                >
+                  Get In Touch With Me
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+    </>
   );
 }

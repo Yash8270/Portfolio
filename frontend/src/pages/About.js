@@ -5,7 +5,7 @@ import profile from '../assets/profile_copy.jpg';
 import { Link } from 'react-router-dom';
 import { iconMap } from '../IconMap';
 
-export default function About({ data }) {
+export default function About({ data, services }) {
   return (
     <section id="about" className="py-20 animate-fadeIn">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -124,6 +124,70 @@ export default function About({ data }) {
             ))}
           </div>
         </div>
+
+        {/* --- Services & Technology Solutions (Bento Grid) --- */}
+        {services && services.length > 0 && (
+          <div className="mb-24">
+            <div className="text-center mb-10">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                Services & Capabilities
+              </h3>
+              <p className="text-sm sm:text-base text-slate-400 mt-2">
+                Available for freelance projects, system architecture, and technical consulting
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+              {services.map((service) => (
+                <div
+                  key={service.title}
+                  className="bento-card p-6 sm:p-7 flex flex-col justify-between group"
+                >
+                  <div>
+                    <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-5 group-hover:scale-105 group-hover:bg-blue-500/20 transition-all duration-300">
+                      {iconMap[service.icon] || iconMap.default}
+                    </div>
+                    <h4 className="text-lg font-bold text-white tracking-tight mb-2 group-hover:text-blue-300 transition-colors">
+                      {service.title}
+                    </h4>
+                    <p className="text-sm text-slate-400 leading-relaxed mb-5">
+                      {service.description}
+                    </p>
+                  </div>
+                  {service.tags && (
+                    <div className="flex flex-wrap gap-2 pt-4 border-t border-white/[0.06]">
+                      {service.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="font-mono text-xs px-2.5 py-1 rounded-md bg-white/[0.03] text-slate-300 border border-white/[0.08]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Get In Touch CTA Banner */}
+            <div className="bento-card p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden">
+              <div className="text-center sm:text-left">
+                <h4 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  Ready to collaborate on your next project?
+                </h4>
+                <p className="text-sm text-slate-400 mt-1">
+                  Let's connect and discuss how we can build scalable technology together.
+                </p>
+              </div>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/20 border border-blue-400/30 whitespace-nowrap transform hover:-translate-y-0.5 transition-all duration-200"
+              >
+                Get In Touch With Me <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        )}
 
         {/* --- Editorial Quote --- */}
         <blockquote className="p-8 sm:p-12 rounded-2xl bg-gradient-to-b from-white/[0.03] to-white/[0.01] border border-white/[0.08] text-center max-w-4xl mx-auto shadow-2xl backdrop-blur-md mb-8">

@@ -28,10 +28,14 @@ export default function App() {
                   name={portfolioData.name}
                   titles={portfolioData.titles}
                   socials={portfolioData.socials}
+                  services={portfolioData.services}
                 />
               }
             />
-            <Route path="/about" element={<About data={portfolioData.about} />} />
+            <Route
+              path="/about"
+              element={<About data={portfolioData.about} services={portfolioData.services} />}
+            />
             <Route path="/resume" element={<Resume data={portfolioData.resume} />} />
             <Route path="/projects" element={<Projects data={portfolioData.projects} />} />
             <Route path="/contact" element={<Contact data={portfolioData.contact} />} />

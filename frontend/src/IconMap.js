@@ -13,7 +13,9 @@ import {
   Sparkles,
   Bot,
   Activity,
-  FolderGit2
+  FolderGit2,
+  Globe,
+  Cloud
 } from 'lucide-react';
 
 // --- Icon Components Map ---
@@ -35,6 +37,8 @@ export const iconMap = {
   AI: <Bot className="w-7 h-7 text-blue-400" />,
   'AI Fitness': <Activity className="w-7 h-7 text-blue-400" />,
   PMIS: <Layers className="w-7 h-7 text-blue-400" />,
+  Globe: <Globe className="w-7 h-7 text-blue-400" />,
+  Cloud: <Cloud className="w-7 h-7 text-blue-400" />,
   '': <Sparkles className="w-7 h-7 text-blue-400" />,
   default: <FolderGit2 className="w-7 h-7 text-blue-400" />
 };
